@@ -1,0 +1,7 @@
+playwright
+pytest
+pytest-asyncio
+httpx
+requests
+pytest-xdist
+```
