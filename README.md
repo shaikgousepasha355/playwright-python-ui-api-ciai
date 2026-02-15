@@ -26,14 +26,8 @@ This project is a test automation suite for the SauceDemo web application and pu
    ```
 
 ## Configuration
-
-Edit config.yaml to set your credentials and base URLs:
  ```
-  USERNAME: "standard_user"
-  PASSWORD: "secret_sauce"
-  INVALID_PASSWORD: "wrong_password"
-  BASE_URL: "https://www.saucedemo.com/"
-  API_BASE_URL: "https://dummyjson.com/products"
+ Edit config.yaml to set your credentials and base URLs:
  ```
 
 ## Running Tests
