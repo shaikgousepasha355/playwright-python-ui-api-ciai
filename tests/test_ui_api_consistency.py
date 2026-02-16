@@ -4,7 +4,7 @@ from pages.login_page import LoginPage
 from pages.product_page import ProductsPage
 
 @pytest.mark.e2e
-def test_ui_api_consistency(browser_launch, config):  # Use base_url fixture
+def test_ui_api_consistency(browser_launch, config):
     """Test consistency between UI and API for products."""
     # Fetch products from API
     api_response = ProductsClient.get_all_products(config['API_BASE_URL'])
@@ -20,14 +20,8 @@ def test_ui_api_consistency(browser_launch, config):  # Use base_url fixture
     page.wait_for_selector('.inventory_list', state='visible')
 
     # Fetch products from UI
-    ui_products = ProductsPage(page).get_product_list()[:3]  # Get first 3 products
+    ui_products_data = ProductsPage(page).get_product_list()[:3]  # Get first 3 products
     
-    ui_products_data = []
-    for product in ui_products:
-        name = product.query_selector('[data-test="inventory-item-name"]').inner_text()
-        price = product.query_selector('[data-test="inventory-item-price"]').inner_text()
-        ui_products_data.append({"name": name, "price": price})
-
 # Mapping strategy explanation:
 # Since Sauce Demo and DummyJSON products do not match one-to-one,
 # we validate that both systems provide product names/titles and prices,
