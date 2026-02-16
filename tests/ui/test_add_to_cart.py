@@ -18,12 +18,12 @@ def test_add_products_to_cart_and_validate(browser_launch, config):
     assert products.is_logged_in(), "Expected to be on products page after login"
 
     # Choose two products
-    product_elements = products.get_product_list()
-    assert len(product_elements) >= 2, "Expected at least two products to be present on products page"
+    products_list = products.get_product_list()
+    assert len(products_list) >= 2, "Expected at least two products to be present on products page"
 
-    first_product = product_elements[0].query_selector('[data-test="inventory-item-name"]').inner_text()
-    second_product = product_elements[1].query_selector('[data-test="inventory-item-name"]').inner_text()
-
+    first_product = products_list[0]["name"]
+    second_product = products_list[1]["name"]
+    
     # Add products to cart
     products.add_product_to_cart(first_product)
     products.add_product_to_cart(second_product)
